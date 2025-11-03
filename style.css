@@ -1,0 +1,137 @@
+:root {
+  --header-background-color: #EB9486;
+  --content-background-color: #CBF7ED;
+  --book-background-color: #71A9F7;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: var(--content-background-color);
+  margin: 0;
+  /* color: #272838; */
+  color: white;
+  height: 100vh;
+}
+
+.header {
+  grid-row: 1 / span 1;
+  display: flex;
+  justify-content: center;
+  background-color: var(--header-background-color);
+  margin: 0;
+}
+
+.content {
+  grid-row: 2 / span 1;
+}
+
+.book-container {
+  margin: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1em;
+}
+
+.book {
+  display: grid;
+  grid-template-rows: 2fr repeat(3, 1fr);
+  height: clamp(200px, 300px, 400px);
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  background-color: var(--book-background-color);
+  border-radius: 10px;
+  padding: 1em;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.book-title,
+.book-author,
+.book-pages,
+.book-read {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.book-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+
+.book-author,
+.book-pages,
+.book-read {
+  white-space: nowrap;
+}
+
+.remove-book-button {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  background-color: white;
+  border: none;
+  border-radius:25%;
+  padding: 0.5em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  color: var(--header-background-color);
+}
+
+.remove-book-button:hover {
+  background-color: var(--header-background-color);
+  color: white;
+}
+
+.remove-book-button:active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.toggle-read-button {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  background-color: white;
+  border: none;
+  border-radius: 25%;
+  padding: 0.5em;
+}
+
+.toggle-read-button:hover {
+  background-color: var(--header-background-color);
+  color: white;
+}
+
+.toggle-read-button:active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+.footer {
+  grid-row: 3 / span 1;
+  display: flex;
+  justify-content: center;
+}
+
+.add-book-button {
+  background-color: var(--header-background-color);
+  color: white;
+  border: none;
+  border-radius: 10%;
+  padding: 1em;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
