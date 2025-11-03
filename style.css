@@ -184,4 +184,43 @@ dialog > button {
   position: absolute;
   top: 0.5em;
   right: 1em;
+  background-color: white;
+  border: none;
+  border-radius: 25%;
+  padding: 0.5em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  color: var(--header-background-color);
+}
+
+dialog > button:hover {
+  background-color: var(--header-background-color);
+  color: white;
+}
+
+dialog > button:active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+dialog > form button[type="submit"] {
+  background-color: var(--header-background-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75em 1.5em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+dialog > form button[type="submit"]:hover {
+  background-color: white;
+  color: var(--header-background-color);
+}
+
+dialog > form button[type="submit"]:active {
+  background-color: rgba(255, 255, 255, 0.4);
 }
