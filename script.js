@@ -1,15 +1,4 @@
-let myLibrary = [
-  new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, true),
-  new Book("1984", "George Orwell", 328, false),
-  new Book("To Kill a Mockingbird", "Harper Lee", 281, true),
-  new Book("Pride and Prejudice", "Jane Austen", 279, false),
-  new Book("The Catcher in the Rye", "J.D. Salinger", 224, true),
-  new Book("The Hobbit", "J.R.R. Tolkien", 310, false),
-  new Book("The Little Prince", "Antoine de Saint-Exupéry", 96, true),
-  new Book("The Alchemist", "Paulo Coelho", 160, false),
-  new Book("The Lord of the Rings", "J.R.R. Tolkien", 1137, true),
-  new Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 193, false),
-];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.id = crypto.randomUUID();
@@ -80,4 +69,44 @@ function displayBooks() {
   });
 }
 
-displayBooks();
+function initLibrary() {
+  const addBookButton = document.querySelector(".add-book-button");
+  const closeBookButton = document.querySelector("dialog button");
+  addBookButton.addEventListener("click", () => {
+    document.querySelector(".add-book-dialog").showModal();
+  });
+  closeBookButton.addEventListener("click", () => {
+    document.querySelector(".add-book-dialog").close();
+  });
+
+  const submitButton = document.querySelector("dialog form button[type='submit']");
+  submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = parseInt(document.querySelector("#pages").value);
+    const read = document.querySelector("#read").checked;
+    if (!title || !author) {
+      alert("Please fill in all fields");
+      return;
+    }
+    addBookToLibrary(title, author, isNaN(pages) ? 0 : pages, read);
+    displayBooks();
+    closeBookButton.click();
+    document.querySelector("dialog form").reset();
+  });
+  
+  addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, true);
+  addBookToLibrary("1984", "George Orwell", 328, false);
+  addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, true);
+  addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, false);
+  addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 224, true);
+  addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, false);
+  addBookToLibrary("The Little Prince", "Antoine de Saint-Exupéry", 96, true);
+  addBookToLibrary("The Alchemist", "Paulo Coelho", 160, false);
+  addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", 1137, true);
+  addBookToLibrary("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 193, false);
+  displayBooks();
+}
+
+initLibrary();

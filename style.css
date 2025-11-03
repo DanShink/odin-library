@@ -107,6 +107,7 @@ body {
   border: none;
   border-radius: 25%;
   padding: 0.5em;
+  cursor: pointer;
 }
 
 .toggle-read-button:hover {
@@ -134,4 +135,53 @@ body {
   cursor: pointer;
   font-weight: bold;
   margin-bottom: 1em;
+}
+
+.add-book-button:hover {
+  background-color: white;
+  color: var(--header-background-color);
+}
+
+/* .add-book-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+} */
+
+dialog {
+  background-color: var(--content-background-color);
+  color: var(--header-background-color);
+  border-radius: 10px;
+  border: 2px solid var(--header-background-color);
+}
+
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em 1em;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: start;
+}
+
+.input-field > input[type="checkbox"] {
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+dialog > button {
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
 }
